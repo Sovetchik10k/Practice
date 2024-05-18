@@ -10,11 +10,11 @@ use ParkingSystem\Vehicles\Car;
 use ParkingSystem\Vehicles\Truck;
 
 $parking = new Parking([1, 2, 3]);
-$vehicles = [new Car(), new Car(), new Truck(), new Car()];
+$vehicles = [new Car(), new Car(), new Car(), new Truck(), new Truck(), new Car(), new Car(), new Car()];
 
 $result = [];
 foreach ($vehicles as $vehicle) {
     $result[] = $vehicle->park($parking);
 }
 
-echo implode(' ', $result); // Ожидаемый вывод: y y y y
+echo implode(' ', $result); 
