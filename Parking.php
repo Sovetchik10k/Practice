@@ -9,13 +9,11 @@ class Parking
 {
     private $floors;
     private $availableSpaces;
-    private $db;
 
-    public function __construct(array $availableSpaces, Database $db)
+    public function __construct(array $availableSpaces)
     {
         $this->floors = count($availableSpaces);
         $this->availableSpaces = $availableSpaces;
-        $this->db = $db;
     }
 
     public function parkVehicle($vehicle): string
@@ -47,12 +45,5 @@ class Parking
         } else {
             return 'n';
         }
-    }
-
-    public function logParking($vehicleType, $result)
-    {
-        $pdo = $this->db->getConnection();
-        $stmt = $pdo->prepare("INSERT INTO ParkingLogs (vehicle_type, result) VALUES (:vehicle_type, :result)");
-        $result = $stmt->execute(['vehicle_type' => $vehicleType, 'result' => $result]);
     }
 }

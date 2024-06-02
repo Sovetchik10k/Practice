@@ -18,18 +18,15 @@ $database = new Database();
 $availableSpaces = [1, 2, 3];
 
 
-$parking = new Parking($availableSpaces, $database);
+$parking = new Parking($availableSpaces);
 
-$vehicles = [new Car(), new Car(), new Truck(), new Car()];
+$vehicles = [new Car(), new Car(), new Truck(), new Truck()];
 
 $result = [];
 foreach ($vehicles as $vehicle) {
-    $result[] = $parking->parkVehicle($vehicle);
-}
-
-
-foreach ($result as $vehicleType => $parkingResult) {
-    $parking->logParking($vehicleType, $parkingResult);
+    $parkingResult = $parking->parkVehicle($vehicle);
+    $vehicle->logParking($parkingResult);
+    $result[] = $parkingResult;
 }
 
 echo implode(' ', $result);

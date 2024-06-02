@@ -2,17 +2,14 @@
 
 namespace ParkingSystem\Vehicles;
 
-use ParkingSystem\Parking;
+use ParkingSystem\Database;
 
 class Truck
 {
-    public function __construct()
+    public function logParking($result)
     {
-        $this->type = VehicleType::Truck;
-    }
-
-    public function park(Parking $parking): string
-    {
-        return $parking->parkTruck();
+        $db = (new Database())->getConnection();
+        $stmt = $db->prepare("INSERT INTO TruckParkingLogs (result) VALUES (:result)");
+        $stmt->execute(['result' => $result]);
     }
 }
