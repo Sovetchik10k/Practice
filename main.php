@@ -11,12 +11,9 @@ use ParkingSystem\Database;
 use ParkingSystem\Vehicles\Car;
 use ParkingSystem\Vehicles\Truck;
 
-
 $database = new Database();
 
-
 $availableSpaces = [1, 2, 3];
-
 
 $parking = new Parking($availableSpaces);
 

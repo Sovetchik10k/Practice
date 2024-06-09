@@ -8,7 +8,7 @@ use PDOException;
 class Database
 {
     private $serverName = 'HOME-PC';
-    private $database = 'ParkingSystem';
+    private $database = 'ParkingSystemTest';
     private $pdo;
     private $error;
 
